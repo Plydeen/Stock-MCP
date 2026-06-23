@@ -1,0 +1,23 @@
+services:
+  stock-mcp:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    container_name: stock-mcp
+    env_file:
+      - ../.env
+    ports:
+      - "127.0.0.1:${MCP_PORT:-8082}:8080"
+    restart: unless-stopped
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: stock-mcp-tunnel
+    profiles:
+      - tunnel
+    command: tunnel run
+    environment:
+      TUNNEL_TOKEN: ${CLOUDFLARE_TUNNEL_TOKEN}
+    depends_on:
+      - stock-mcp
+    restart: unless-stopped
