@@ -1,0 +1,7 @@
+# Optional overlay: Traefik HTTP Basic Auth (legacy; incompatible with MCP OAuth).
+# Usage: docker compose -f deploy/docker-compose.yml -f deploy/docker-compose.basic-auth.yml up -d
+services:
+  stock-mcp:
+    labels:
+      - traefik.http.routers.stock-mcp.middlewares=stock-mcp-auth
+      - traefik.http.middlewares.stock-mcp-auth.basicauth.users=${MCP_BASIC_AUTH_USERS}

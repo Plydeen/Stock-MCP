@@ -6,8 +6,20 @@ services:
     container_name: stock-mcp
     env_file:
       - ../.env
+    volumes:
+      - stock-mcp-oauth:/root/.local/share/fastmcp
     ports:
       - "127.0.0.1:${MCP_PORT:-8082}:8080"
+    networks:
+      - traefik-public
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=traefik-public
+      - traefik.http.routers.stock-mcp.rule=Host(`mcp.kowens.tech`)
+      - traefik.http.routers.stock-mcp.entrypoints=websecure
+      - traefik.http.routers.stock-mcp.tls.certresolver=letsencrypt
+      - traefik.http.services.stock-mcp.loadbalancer.server.port=8080
+      - traefik.http.services.stock-mcp.loadbalancer.responseForwarding.flushInterval=1s
     restart: unless-stopped
 
   cloudflared:
@@ -21,3 +33,10 @@ services:
     depends_on:
       - stock-mcp
     restart: unless-stopped
+
+networks:
+  traefik-public:
+    external: true
+
+volumes:
+  stock-mcp-oauth:

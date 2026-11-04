@@ -26,6 +26,12 @@ class Settings(BaseSettings):
     flat_file_cache_ttl_hours: int = 24
     cloudflare_tunnel_token: str = ""
     public_mcp_hostname: str = ""
+    mcp_auth_mode: str = "basic"
+    mcp_public_base_url: str = ""
+    mcp_oauth_provider: str = "github"
+    mcp_oauth_client_id: str = ""
+    mcp_oauth_client_secret: str = ""
+    mcp_oauth_jwt_signing_key: str = ""
 
     def require_api_key(self) -> str:
         if not self.massive_api_key:

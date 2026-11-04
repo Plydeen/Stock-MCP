@@ -1,0 +1,15 @@
+2026-06-23T02:58:51.791320 Project directory: /root/Stock-MCP/deploy
+2026-06-23T02:58:51.791609 Pulling project images
+2026-06-23T02:58:51.792114 ------------------------------
+2026-06-23T02:58:51.829518 time="2026-06-23T02:58:51Z" level=warning msg="The \"CLOUDFLARE_TUNNEL_TOKEN\" variable is not set. Defaulting to a blank string."
+2026-06-23T02:58:51.864249  stock-mcp Skipped No image to be pulled
+2026-06-23T02:58:51.867316 ------------------------------
+2026-06-23T02:58:51.867470 Deploying project
+2026-06-23T02:58:51.868036 ------------------------------
+2026-06-23T02:58:51.916475 time="2026-06-23T02:58:51Z" level=warning msg="The \"CLOUDFLARE_TUNNEL_TOKEN\" variable is not set. Defaulting to a blank string."
+2026-06-23T02:58:51.963830  Container stock-mcp Recreate 
+2026-06-23T02:58:52.475175  Container stock-mcp Recreated 
+2026-06-23T02:58:52.482244  Container stock-mcp Starting 
+2026-06-23T02:58:52.620601  Container stock-mcp Started 
+2026-06-23T02:58:52.623834 ------------------------------
+2026-06-23T02:58:52.623900 Project deployed successfully
